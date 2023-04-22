@@ -1,10 +1,11 @@
-import React from 'react';
+import ResponsiveAppBar from "./components/ResponsiveAppBar/ResponsiveAppBar";
+
 
 
 function App() {
   return (
     <div >
-      <h1>Basic Setup</h1>
+      <ResponsiveAppBar />
     </div>
   );
 }
