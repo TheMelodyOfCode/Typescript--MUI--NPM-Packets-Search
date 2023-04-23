@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { 
   MUIAppBar, 
   MUIBox, 
@@ -10,7 +11,6 @@ import {
   MUIContainer,
   MUIAvatar,
   MUIButton,
-  MUITooltip,
   MUIMenuItem,
   MUIFavoriteIcon,
   MUILink,
@@ -41,11 +41,12 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+
   return (
     <MUIAppBar position="static">
       <MUIContainer maxWidth="xl">
         <MUIToolbar disableGutters>
-          <MUIFavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <MUIFavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: '#000', }} />
           <MUITypography
             variant="h6"
             noWrap
@@ -57,7 +58,8 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'red',
+              // color: 'inherit',
               textDecoration: 'none',
             }}
           >
@@ -139,11 +141,12 @@ function ResponsiveAppBar() {
           </MUIBox>
 
           <MUIBox sx={{ flexGrow: 0 }}>
-            <MUITooltip title="Open settings">
+
               <MUIIconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <MUIAvatar alt="Remy Sharp" src="img/avatar.png" />
               </MUIIconButton>
-            </MUITooltip>
+
+
             <MUIMenu
               sx={{ mt: '45px' }}
               id="menu-appbar"

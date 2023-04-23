@@ -6,8 +6,6 @@ import GridWrapper from './components/GridWrapper/GridWrapper';
 
 import { 
   MUIButton,
-  MUIRefreshIcon,
-  MUIIconButton,
   MUIBox,
   MUITypography,
  } from './utils/MaterialUI';
@@ -21,22 +19,29 @@ const App: React.FC = () => {
     const [packages, setPackages] = React.useState<Package[]>([]);
     const [searchResults] = React.useState<Package[]>(packages);
 
-const cardHeaderStyles = {
-  wrapper: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      paddingLeft: '20px',
-      paddingRight: '20px',
-      height: '65px',
-      backgroundColor: '#e0dada',
-      // backgroundColor: '#f5f5f5',
-      borderBottom: '1px solid rgbs(0,0,0,0.12)',
-  },
-  addUserButton: {
-      fontSize: '1.05rem',
-  },
-}   
+    const cardHeaderStyles = {
+      wrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        height: '65px',
+        backgroundColor: '#e0dada',
+        borderBottom: '1px solid rgba(0,0,0,0.12)',
+      },
+      searchButton: {
+        // fontSize: '1.05rem',
+        sx: {
+          size: {
+            xs: 'small',
+            sm: 'small',
+            md: 'large',
+          },
+        },
+      },
+    };
+     
 
 const getHeader = () => {
 
@@ -64,20 +69,16 @@ const getHeader = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleSearch(event.target.value)
               }
-              searchBarWidth="720px"
+              searchBarWidth="90%"
             />
             <MUIBox>
                 <MUIButton 
                     variant="contained"
                     // onClick={addPackage}
-                    size="large"
-                    sx={cardHeaderStyles.addUserButton}
+                    sx={cardHeaderStyles.searchButton}
                 >
                     Search
                 </MUIButton>
-                <MUIIconButton>
-                    <MUIRefreshIcon />
-                </MUIIconButton>
             </MUIBox>
         </MUIBox>
     )

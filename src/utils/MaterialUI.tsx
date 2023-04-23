@@ -121,10 +121,18 @@ interface MUIToolbarProps extends ToolbarProps {
     children: React.ReactElement<any, any>;
   }
   
-  const MUITooltip: React.FC<MUITooltipProps> = ({ children, ...props }) => (
-    <Tooltip {...props}>{children}</Tooltip>
-  );
+  const MUITooltip: React.FC<MUITooltipProps> = ({ children, ...props }) => {
+    const ChildWithRef = React.forwardRef((childProps, ref) => {
+      return React.cloneElement(children, {
+        ...childProps,
+        ref,
+      });
+    });
   
+    return <Tooltip {...props}>{<ChildWithRef />}</Tooltip>;
+  };
+  
+
   // MenuItem
   interface MUIMenuItemProps extends MenuItemProps {
     children: React.ReactNode;
