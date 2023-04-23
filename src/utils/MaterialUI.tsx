@@ -15,6 +15,9 @@ import MenuItem, { MenuItemProps } from '@mui/material/MenuItem';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { SvgIconProps as FavoriteIconProps } from '@mui/material/SvgIcon';
 import Link, { LinkProps } from '@mui/material/Link';
+import SearchIcon from '@mui/icons-material/Search';
+import { SvgIconProps as SearchIconProps } from '@mui/material/SvgIcon';
+import Input, { InputProps } from '@mui/material/Input';
 
 // AppBar
 interface MUIAppBarProps extends AppBarProps {
@@ -136,6 +139,12 @@ const MUILink: React.FC<MUILinkProps> = ({ children, ...props }) => (
   <Link {...props}>{children}</Link>
 );
 
+// MUISearchIcon
+const MUISearchIcon: React.FC<SearchIconProps> = (props) => <SearchIcon {...props} />;
+
+// MUIInput
+const MUIInput: React.FC<InputProps> = (props) => <Input {...props} />;
+
 
 export {
 MUIAppBar,
@@ -152,5 +161,6 @@ MUITooltip,
 MUIMenuItem,
 MUIFavoriteIcon,
 MUILink,
-
+MUISearchIcon,
+MUIInput,
 };
