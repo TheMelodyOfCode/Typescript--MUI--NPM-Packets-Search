@@ -21,6 +21,8 @@ import {
   Settings 
 } from './consts/navbarItems';
 
+// Styles
+import { appbarStyles } from './ResponsiveAppBar.styles';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -43,37 +45,28 @@ function ResponsiveAppBar() {
 
 
   return (
-    <MUIAppBar position="static">
+    <MUIAppBar  sx={appbarStyles.main} position="static">
       <MUIContainer maxWidth="xl">
         <MUIToolbar disableGutters>
-          <MUIFavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: '#000', }} />
+          <MUIFavoriteIcon sx={appbarStyles.logoIconMD} />
           <MUITypography
             variant="h6"
             noWrap
             component="a"
             href="https://www.npmjs.com/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'red',
-              // color: 'inherit',
-              textDecoration: 'none',
-            }}
+            sx={appbarStyles.npmLogoMD}
           >
             NPM
           </MUITypography>
 
-          <MUIBox sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <MUIBox sx={appbarStyles.boxMD}>
             <MUIIconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              // sx={appbarStyles.MUIIconButton} 
             >
               <MUIMenuIcon />
             </MUIIconButton>
@@ -91,14 +84,12 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
+              sx={appbarStyles.leftMenu}
             >
               {AppBarItems.map((page) => (
-                <MUIMenuItem key={page.id} onClick={handleCloseNavMenu}>
+                <MUIMenuItem  key={page.id} onClick={handleCloseNavMenu}>
                   <MUITypography textAlign="center">
-                    <MUILink href={page.route} underline="hover">
+                    <MUILink sx={{color: 'black'}} href={page.route} underline="hover">
                       {page.label}
                     </MUILink>
                   </MUITypography>
@@ -106,32 +97,23 @@ function ResponsiveAppBar() {
               ))}
             </MUIMenu>
           </MUIBox>
-          <MUIFavoriteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <MUIFavoriteIcon sx={appbarStyles.logoIconXS} />
           <MUITypography
             variant="h5"
             noWrap
             component="a"
             href="https://www.npmjs.com/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+            sx={appbarStyles.npmLogoXS}
           >
             NPM
           </MUITypography>
-          <MUIBox sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <MUIBox sx={appbarStyles.boxAppItems}>
             {AppBarItems.map((page) => (
 
               <MUILink key={page.id} href={page.route} underline="hover">
                 <MUIButton
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={appbarStyles.appItems}
                 >
                     {page.label}
                 </MUIButton>
@@ -166,7 +148,7 @@ function ResponsiveAppBar() {
               {Settings.map((setting) => (
                 <MUIMenuItem key={setting.id} onClick={handleCloseUserMenu}>
                   <MUILink href={setting.route} underline="hover">
-                    <MUITypography textAlign="center">{setting.label}</MUITypography>
+                    <MUITypography sx={{color: 'black',}}  textAlign="center">{setting.label}</MUITypography>
                   </MUILink>
                 </MUIMenuItem>
               ))}

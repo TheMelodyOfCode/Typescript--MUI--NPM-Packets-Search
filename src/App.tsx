@@ -31,14 +31,9 @@ const App: React.FC = () => {
         borderBottom: '1px solid rgba(0,0,0,0.12)',
       },
       searchButton: {
-        // fontSize: '1.05rem',
-        sx: {
-          size: {
-            xs: 'small',
-            sm: 'small',
-            md: 'large',
-          },
-        },
+        size: 'small',
+        fontWeight: 'bold',
+        backgroundColor: 'black',
       },
     };
      
