@@ -66,7 +66,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              // sx={appbarStyles.MUIIconButton} 
+              sx={appbarStyles.leftMenu}
             >
               <MUIMenuIcon />
             </MUIIconButton>
@@ -84,7 +84,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={appbarStyles.leftMenu}
+              sx={appbarStyles.menuLeftXS}
             >
               {AppBarItems.map((page) => (
                 <MUIMenuItem  key={page.id} onClick={handleCloseNavMenu}>

@@ -41,11 +41,15 @@ export const appbarStyles = {
       display: { xs: 'none', md: 'flex' } ,
     },
     appItems: {
-      my: 2,color: 'black', 
+      my: 2,
+      color: 'black', 
       fontWeight: 'bold', 
       display: 'block' 
     },
     leftMenu: {
+      color: 'black',
+    },
+    menuLeftXS: {
       display: { xs: 'block', md: 'none' },
     },
   };
