@@ -1,21 +1,25 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import Link from '@mui/material/Link';
+import { 
+  MUIAppBar, 
+  MUIBox, 
+  MUIToolbar, 
+  MUIIconButton, 
+  MUITypography,
+  MUIMenu,
+  MUIMenuIcon,
+  MUIContainer,
+  MUIAvatar,
+  MUIButton,
+  MUITooltip,
+  MUIMenuItem,
+  MUIFavoriteIcon,
+  MUILink,
+} from '../../utils/MaterialUI';
 
-import { AppBarItems } from './consts/navbarItems';
-import { Settings } from './consts/settings';
+import { 
+  AppBarItems, 
+  Settings 
+} from './consts/navbarItems';
 
 
 function ResponsiveAppBar() {
@@ -38,11 +42,11 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <FavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
+    <MUIAppBar position="static">
+      <MUIContainer maxWidth="xl">
+        <MUIToolbar disableGutters>
+          <MUIFavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <MUITypography
             variant="h6"
             noWrap
             component="a"
@@ -58,10 +62,10 @@ function ResponsiveAppBar() {
             }}
           >
             NPM
-          </Typography>
+          </MUITypography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+          <MUIBox sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <MUIIconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -69,9 +73,9 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
+              <MUIMenuIcon />
+            </MUIIconButton>
+            <MUIMenu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -90,18 +94,18 @@ function ResponsiveAppBar() {
               }}
             >
               {AppBarItems.map((page) => (
-                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link href={page.route} underline="hover">
+                <MUIMenuItem key={page.id} onClick={handleCloseNavMenu}>
+                  <MUITypography textAlign="center">
+                    <MUILink href={page.route} underline="hover">
                       {page.label}
-                    </Link>
-                  </Typography>
-                </MenuItem>
+                    </MUILink>
+                  </MUITypography>
+                </MUIMenuItem>
               ))}
-            </Menu>
-          </Box>
-          <FavoriteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
+            </MUIMenu>
+          </MUIBox>
+          <MUIFavoriteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <MUITypography
             variant="h5"
             noWrap
             component="a"
@@ -118,29 +122,29 @@ function ResponsiveAppBar() {
             }}
           >
             NPM
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          </MUITypography>
+          <MUIBox sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {AppBarItems.map((page) => (
 
-              <Link key={page.id} href={page.route} underline="hover">
-                <Button
+              <MUILink key={page.id} href={page.route} underline="hover">
+                <MUIButton
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                     {page.label}
-                </Button>
-              </Link>
+                </MUIButton>
+              </MUILink>
 
             ))}
-          </Box>
+          </MUIBox>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="img/avatar.png" />
-              </IconButton>
-            </Tooltip>
-            <Menu
+          <MUIBox sx={{ flexGrow: 0 }}>
+            <MUITooltip title="Open settings">
+              <MUIIconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <MUIAvatar alt="Remy Sharp" src="img/avatar.png" />
+              </MUIIconButton>
+            </MUITooltip>
+            <MUIMenu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -157,17 +161,17 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {Settings.map((setting) => (
-                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
-                  <Link href={setting.route} underline="hover">
-                    <Typography textAlign="center">{setting.label}</Typography>
-                  </Link>
-                </MenuItem>
+                <MUIMenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                  <MUILink href={setting.route} underline="hover">
+                    <MUITypography textAlign="center">{setting.label}</MUITypography>
+                  </MUILink>
+                </MUIMenuItem>
               ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </MUIMenu>
+          </MUIBox>
+        </MUIToolbar>
+      </MUIContainer>
+    </MUIAppBar>
   );
 }
 export default ResponsiveAppBar;
