@@ -23,8 +23,8 @@ import CardContent, { CardContentProps } from '@mui/material/CardContent';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { SvgIconProps as RefreshIconProps } from '@mui/material/SvgIcon';
 import Grid, { GridProps } from '@mui/material/Grid';
-
-
+import Skeleton from "@mui/material/Skeleton";
+import { SkeletonProps } from "@mui/material/Skeleton";
 
 // AppBar
 interface MUIAppBarProps extends AppBarProps {
@@ -178,6 +178,18 @@ const MUIGrid: React.FC<MUIGridProps> = ({ children, ...props }) => (
   <Grid {...props}>{children}</Grid>
 );
 
+interface MUISkeletonProps extends SkeletonProps {
+  // You can add additional custom properties if needed
+  customProp?: string;
+}
+const MUISkeleton: React.FC<MUISkeletonProps> = (props) => {
+  const { customProp, ...skeletonProps } = props;
+
+  // You can use the customProp if needed for additional functionality
+
+  return <Skeleton {...skeletonProps} />;
+};
+
 export {
 MUIAppBar,
 MUIBox,
@@ -199,5 +211,6 @@ MUICard,
 MUICardContent,
 MUIRefreshIcon,
 MUIGrid,
+MUISkeleton,
 
 };

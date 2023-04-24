@@ -1,8 +1,14 @@
 import * as React from 'react'
+// import { Provider } from 'react-redux';
+// import {store} from './reducerState/centralReduxDistribution'
+import { useTypedSelector } from './reduxHooks/useTypedSelector';
+import { useActions } from './reduxHooks/useActions';
+
 import ResponsiveAppBar from "./components/ResponsiveAppBar/ResponsiveAppBar";
 import BasicCard from "./components/BasicCard/BasicCard";
 import SearchBar from './components/SearchBar/SearchBar';
 import GridWrapper from './components/GridWrapper/GridWrapper';
+import Loading from './components/loading/loading';
 
 import { 
   MUIButton,
@@ -11,13 +17,19 @@ import {
  } from './utils/MaterialUI';
 
 
- interface Package {
-  name: string[];
-}
+
 
 const App: React.FC = () => {
-    const [packages, setPackages] = React.useState<Package[]>([]);
-    const [searchResults] = React.useState<Package[]>(packages);
+
+  const [term, setTerm] = React.useState('');
+  const { searchRepositories } = useActions();
+  const { data, error, loading } = useTypedSelector((state) => state.repositories);
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      searchRepositories(term);
+  };
+
 
     const cardHeaderStyles = {
       wrapper: {
@@ -31,6 +43,8 @@ const App: React.FC = () => {
         borderBottom: '1px solid rgba(0,0,0,0.12)',
       },
       searchButton: {
+        display: 'flex',
+        justifySelf: 'right',
         size: 'small',
         fontWeight: 'bold',
         backgroundColor: 'black',
@@ -40,80 +54,71 @@ const App: React.FC = () => {
 
 const getHeader = () => {
 
-  const handleSearch = (value: string) => {
-    filterData(value);
-  };
-
-  const filterData = (value: string) => {
-    const lowercasedValue = value.toLowerCase().trim();
-    if (lowercasedValue === '') setPackages(searchResults);
-    else {
-      const filteredData = searchResults.filter((item) => {
-        return item.name.some((namePart) =>
-          namePart.toLowerCase().includes(lowercasedValue),
-        );
-      });
-      setPackages(filteredData);
-    }
-  };
-  
     return (
-        <MUIBox sx={cardHeaderStyles.wrapper}>
-            <SearchBar
-              placeholder="Search by name for the package"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                handleSearch(event.target.value)
-              }
-              searchBarWidth="90%"
-            />
-            <MUIBox>
-                <MUIButton 
-                    variant="contained"
-                    // onClick={addPackage}
-                    sx={cardHeaderStyles.searchButton}
-                >
-                    Search
-                </MUIButton>
-            </MUIBox>
+      <form onSubmit={onSubmit}>
+         <MUIBox sx={cardHeaderStyles.wrapper}>
+          <SearchBar
+            placeholder="Search by name for the package"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setTerm(event.target.value)
+            }
+            searchBarWidth="90%"
+          />
+          <MUIBox >
+            <MUIButton
+              variant="contained"
+              type="submit"
+              sx={cardHeaderStyles.searchButton}
+            >
+              Search
+            </MUIButton>
+          </MUIBox>
         </MUIBox>
+      </form>
     )
 };
 
 
-// const addPackages = (data) => {
-//   packages.push({ ...data });
-// };
-
 const getContent = () => (
-  <>
-      {
-          packages.length ? 
-              packages.map((data) => (
-                  <MUIBox key={data.name.join()} sx={{ marginBottom: '20px' }}>
-                      <MUITypography>Package: {data.name[0]}</MUITypography>
-                      <MUITypography>Description: {data.name[1]}</MUITypography>
-                  </MUIBox>
-              )) :
-              <MUITypography 
-                  align="center"
-                  sx={{ margin: '40px 16px', color: 'rgba(0, 0, 0, 0.6)', fontSize: '1.3rem'}}
-              >
-                  No Packages found yet
-              </MUITypography>
-      }
-  </>
-);
+        <>
+            <>
+              {error && <h3>{error}</h3>}
+              {loading && <><Loading><h3>Loading...</h3></Loading> <h3>Loading...</h3></>}
+              {!error &&
+                !loading &&
+                data.map((name) => (
+                  <div key={name}>
+                    <a
+                      href={`https://www.npmjs.com/package/${name[0]}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >
+                      {name[0]}
+                    </a>
+                    <p>{name[1]}</p>
+                  </div>
+                ))}
+            </>
+          {
+                data.length === 0 ? (
+            <MUITypography
+              align="center"
+              sx={{ margin: '40px 16px', color: 'rgba(0, 0, 0, 0.6)', fontSize: '1.3rem' }}
+            >
+              No Packages found yet
+            </MUITypography>
+          ) : null
+          }
+        </>
+      );
 
+      return (
+          <GridWrapper>
+            <ResponsiveAppBar />
+            <BasicCard header={getHeader()} content={getContent()} />
+          </GridWrapper>
+      );
 
-  return (
-    <GridWrapper >
-      <ResponsiveAppBar />
-      <BasicCard
-                header={getHeader()}
-                content={getContent()}
-            />
-    </GridWrapper>
-  );
 }
 
 export default App;
