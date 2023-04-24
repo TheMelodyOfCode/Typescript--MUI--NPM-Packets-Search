@@ -27,6 +27,13 @@
 > - @types/react-redux is a TypeScript package providing type definitions for the react-redux library,   
 helping you write safer and more predictable code by giving you type checking   
 and autocompletion in your TypeScript-based React-Redux projects.
+  
+> - **@reduxjs/toolkit**  
+> - npm install @reduxjs/toolkit
+> - @reduxjs/toolkit is a package created by the Redux team to make it easier and more efficient  
+ to work with Redux in your applications.   
+ It simplifies the setup process, reduces boilerplate code, and provides a set of useful tools   
+ and utilities for common Redux tasks.  
 
 
 
