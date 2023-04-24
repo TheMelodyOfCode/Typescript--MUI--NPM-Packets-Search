@@ -5,9 +5,6 @@
 elements in a set. It makes code more readable and helps prevent errors by allowing you to 
 use these named values instead of hardcoding their corresponding values (like numbers or strings).
 
-@property {string} SEARCH_REPOSITORIES - Action type for searching repositories.
-@property {string} SEARCH_REPOSITORIES_SUCCESS - Action type for successful repository search.
-@property {string} SEARCH_REPOSITORIES_ERROR - Action type for failed repository search.
 */
 
 export enum ActionType {
