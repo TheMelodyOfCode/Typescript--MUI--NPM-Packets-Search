@@ -1,43 +1,59 @@
-# NPM Packages Search - MUI
+# NPM Packets Search App
 
-## Typescript, React, Redux & Material UI
+This is a simple app to search for NPM packages built with TypeScript, React, Redux, and Material-UI.
 
-### Dependencies
-  
-> - [Material - UI](https://material-ui.com/)  
-> - npm install @mui/material @emotion/react @emotion/styled  
-  
-> - **Icons**  
-> - npm i @mui/icons-material  
-  
-> - **React Redux**  
-> - npm i react-redux  
-> - React bindings for Redux help connect your React components to the Redux store,  
- allowing components to access and update the global state easily,  
- improving state management in your app.  
-  
-> - **Redux Thunk**  
-> - npm i redux-thunk  
-> - Redux Thunk is a middleware that lets you write async actions in Redux,   
- enabling you to handle complex logic, like API calls or delayed actions,   
- more easily in your app's state management.  
-  
-> - **@types/react-redux**  
-> - npm i @types/react-redux  
-> - @types/react-redux is a TypeScript package providing type definitions for the react-redux library,   
-helping you write safer and more predictable code by giving you type checking   
-and autocompletion in your TypeScript-based React-Redux projects.
-  
-> - **@reduxjs/toolkit**  
-> - npm install @reduxjs/toolkit
-> - @reduxjs/toolkit is a package created by the Redux team to make it easier and more efficient  
- to work with Redux in your applications.   
- It simplifies the setup process, reduces boilerplate code, and provides a set of useful tools   
- and utilities for common Redux tasks.  
+The main focus of this project is to provide a well-structured and maintainable codebase by centralizing all Material-UI imports and Redux logic.
+
+## Key Features
+
+- Centralized Material-UI imports and helper functions for easy maintenance in case of major changes
+- Centralized Redux store and actions for better state management
+- Built with TypeScript for type safety and better developer experience
+
+## Dependencies
+
+This project uses the following dependencies:
+
+### Material-UI
+
+- [Material-UI](https://material-ui.com/)
+- Install: `npm install @mui/material @emotion/react @emotion/styled`
+
+### Icons
+
+- Material-UI Icons
+- Install: `npm i @mui/icons-material`
+
+### React Redux
+
+- React bindings for Redux
+- Install: `npm i react-redux`
+
+### Redux Thunk
+
+- Middleware for async actions in Redux
+- Install: `npm i redux-thunk`
+
+### TypeScript Definitions for React-Redux
+
+- Type definitions for the react-redux library
+- Install: `npm i @types/react-redux`
+
+### Redux Toolkit
+
+- Official toolkit for Redux
+- Install: `npm install @reduxjs/toolkit`
+
+## Setup
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+4. Open [http://localhost:3000](http://localhost:3000) to view the app in your browser
 
 
+## Credits
 
+- Special thanks to [Stephen Grider](https://www.udemy.com/user/sgslo/) for his excellent TypeScript tutorials
 
-
-
-
+Enjoy searching for NPM packages!
