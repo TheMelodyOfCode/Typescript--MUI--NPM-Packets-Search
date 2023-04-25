@@ -25,6 +25,7 @@ export const searchRepositories = (term: string) => {
   // Extract package names and descriptions from the data   
           const names = data.objects.map((result: any) => {
             return [result.package.name, result.package.description]
+            // return [result.package.name, result.package.description]
           });
   // Dispatch a successful search action with the extracted names as the payload
           dispatch({

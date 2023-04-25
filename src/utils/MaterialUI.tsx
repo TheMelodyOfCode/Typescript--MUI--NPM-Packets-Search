@@ -22,9 +22,11 @@ import Card, { CardProps } from '@mui/material/Card';
 import CardContent, { CardContentProps } from '@mui/material/CardContent';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { SvgIconProps as RefreshIconProps } from '@mui/material/SvgIcon';
-import Grid, { GridProps } from '@mui/material/Grid';
+import Grid, { GridProps, } from '@mui/material/Grid';
 import Skeleton from "@mui/material/Skeleton";
 import { SkeletonProps } from "@mui/material/Skeleton";
+import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
+
 
 // AppBar
 interface MUIAppBarProps extends AppBarProps {
@@ -184,10 +186,54 @@ interface MUISkeletonProps extends SkeletonProps {
 }
 const MUISkeleton: React.FC<MUISkeletonProps> = (props) => {
   const { customProp, ...skeletonProps } = props;
-
   // You can use the customProp if needed for additional functionality
-
   return <Skeleton {...skeletonProps} />;
+};
+
+// ################# DATA GRID ####################
+
+interface MUIDataGridProps {
+  data: GridRowsProp;
+  columns: GridColDef[];
+  pageSize?: number;
+  checkboxSelection?: boolean;
+  disableSelectionOnClick?: boolean;
+  columnWidths?: { [key: string]: number };
+}
+
+const MUIDataGrid: React.FC<MUIDataGridProps> = ({
+  data,
+  columns,
+  pageSize = 10,
+  checkboxSelection = false,
+  disableSelectionOnClick = false,
+  columnWidths = {},
+}) => {
+  const adjustedColumns = columns.map((column) => ({
+    ...column,
+    width: columnWidths[column.field] || column.width,
+  }));
+
+
+  return (
+    <div style={{ height: '100%', width: '100%' }}>
+      <DataGrid
+        rows={data}
+        columns={adjustedColumns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 10,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
+      />
+    </div>
+
+  );
 };
 
 export {
@@ -212,5 +258,5 @@ MUICardContent,
 MUIRefreshIcon,
 MUIGrid,
 MUISkeleton,
-
+MUIDataGrid,
 };

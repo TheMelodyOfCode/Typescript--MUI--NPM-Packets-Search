@@ -1,6 +1,4 @@
 import * as React from 'react'
-// import { Provider } from 'react-redux';
-// import {store} from './reducerState/centralReduxDistribution'
 import { useTypedSelector } from './reduxHooks/useTypedSelector';
 import { useActions } from './reduxHooks/useActions';
 
@@ -10,13 +8,16 @@ import SearchBar from './components/SearchBar/SearchBar';
 import GridWrapper from './components/GridWrapper/GridWrapper';
 import Loading from './components/loading/loading';
 
+import RepoTable from './components/RepoTable/RepoTable';
+
 import { 
   MUIButton,
   MUIBox,
   MUITypography,
  } from './utils/MaterialUI';
 
-
+// styles
+import {cardHeaderStyles} from './App.styles'
 
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   const [term, setTerm] = React.useState('');
   const { searchRepositories } = useActions();
   const { data, error, loading } = useTypedSelector((state) => state.repositories);
+  
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -31,26 +33,6 @@ const App: React.FC = () => {
   };
 
 
-    const cardHeaderStyles = {
-      wrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-        height: '65px',
-        backgroundColor: '#e0dada',
-        borderBottom: '1px solid rgba(0,0,0,0.12)',
-      },
-      searchButton: {
-        display: 'flex',
-        justifySelf: 'right',
-        size: 'small',
-        fontWeight: 'bold',
-        backgroundColor: 'black',
-      },
-    };
-     
 
 const getHeader = () => {
 
@@ -79,6 +61,7 @@ const getHeader = () => {
 };
 
 
+
 const getContent = () => (
         <>
             <>
@@ -86,34 +69,24 @@ const getContent = () => (
               {loading && <><Loading><h3>Loading...</h3></Loading> <h3>Loading...</h3></>}
               {!error &&
                 !loading &&
-                data.map((name) => (
-                  <div key={name}>
-                    <a
-                      href={`https://www.npmjs.com/package/${name[0]}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >
-                      {name[0]}
-                    </a>
-                    <p>{name[1]}</p>
-                  </div>
-                ))}
+              <RepoTable />
+              }
             </>
           {
-                data.length === 0 ? (
-            <MUITypography
+            data.length === 0 ? (
+              <MUITypography
               align="center"
               sx={{ margin: '40px 16px', color: 'rgba(0, 0, 0, 0.6)', fontSize: '1.3rem' }}
-            >
+              >
               No Packages found yet
             </MUITypography>
           ) : null
-          }
+        }
         </>
       );
-
+      
       return (
-          <GridWrapper>
+        <GridWrapper>
             <ResponsiveAppBar />
             <BasicCard header={getHeader()} content={getContent()} />
           </GridWrapper>
