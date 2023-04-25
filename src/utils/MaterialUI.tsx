@@ -216,7 +216,7 @@ const MUIDataGrid: React.FC<MUIDataGridProps> = ({
 
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div style={{ height: 650, width: '100%' }}>
       <DataGrid
         rows={data}
         columns={adjustedColumns}
