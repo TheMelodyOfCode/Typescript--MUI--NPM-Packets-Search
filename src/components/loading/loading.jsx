@@ -1,5 +1,8 @@
 import { MUISkeleton } from "../../utils/MaterialUI";
 
+/*
+ * Loading displays a skeleton loading indicator for any wrapped child component.
+ */
 const Loading = ({ children }) => {
   return (
       <>

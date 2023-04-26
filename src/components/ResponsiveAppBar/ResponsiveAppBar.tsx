@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+// Import necessary helper functions from the MaterialUI utils file
 import { 
   MUIAppBar, 
   MUIBox, 
@@ -16,18 +17,22 @@ import {
   MUILink,
 } from '../../utils/MaterialUI';
 
+// Import constants for the AppBar items and settings
 import { 
   AppBarItems, 
   Settings 
 } from './consts/navbarItems';
 
-// Styles
+// Import styles for the ResponsiveAppBar component
 import { appbarStyles } from './ResponsiveAppBar.styles';
 
+/** ResponsiveAppBar renders a responsive navigation AppBar with links to pages and user settings. */
 function ResponsiveAppBar() {
+  // State hooks for managing the open state of the navigation and user menus
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
+  // Handlers for opening and closing the navigation and user menus
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };

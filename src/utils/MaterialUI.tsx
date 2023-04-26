@@ -1,31 +1,35 @@
+// Import necessary libraries and components:
 import * as React from 'react';
-import AppBar, { AppBarProps } from '@mui/material/AppBar';
-import Box, { BoxProps } from '@mui/material/Box';
-import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography, { TypographyProps } from '@mui/material/Typography';
-import Menu, { MenuProps } from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import { SvgIconProps } from '@mui/material/SvgIcon';
-import Container, { ContainerProps } from '@mui/material/Container';
-import Avatar, { AvatarProps } from '@mui/material/Avatar';
-import Button, { ButtonProps } from '@mui/material/Button';
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
-import MenuItem, { MenuItemProps } from '@mui/material/MenuItem';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { SvgIconProps as FavoriteIconProps } from '@mui/material/SvgIcon';
-import Link, { LinkProps } from '@mui/material/Link';
-import SearchIcon from '@mui/icons-material/Search';
-import { SvgIconProps as SearchIconProps } from '@mui/material/SvgIcon';
-import Input, { InputProps } from '@mui/material/Input';
-import Card, { CardProps } from '@mui/material/Card';
-import CardContent, { CardContentProps } from '@mui/material/CardContent';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import { SvgIconProps as RefreshIconProps } from '@mui/material/SvgIcon';
-import Grid, { GridProps, } from '@mui/material/Grid';
-import Skeleton from "@mui/material/Skeleton";
-import { SkeletonProps } from "@mui/material/Skeleton";
-import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
+
+// Material-UI core components
+import AppBar, { AppBarProps } from '@mui/material/AppBar'; 
+import Box, { BoxProps } from '@mui/material/Box'; 
+import Toolbar, { ToolbarProps } from '@mui/material/Toolbar'; 
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'; 
+import Typography, { TypographyProps } from '@mui/material/Typography'; 
+import Menu, { MenuProps } from '@mui/material/Menu'; 
+import MenuItem, { MenuItemProps } from '@mui/material/MenuItem'; 
+import { SvgIconProps } from '@mui/material/SvgIcon'; 
+import Container, { ContainerProps } from '@mui/material/Container'; 
+import Avatar, { AvatarProps } from '@mui/material/Avatar'; 
+import Button, { ButtonProps } from '@mui/material/Button'; 
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip'; 
+import Link, { LinkProps } from '@mui/material/Link'; 
+import Input, { InputProps } from '@mui/material/Input'; 
+import Card, { CardProps } from '@mui/material/Card'; 
+import CardContent, { CardContentProps } from '@mui/material/CardContent'; 
+import Grid, { GridProps } from '@mui/material/Grid'; 
+import Skeleton, { SkeletonProps } from "@mui/material/Skeleton"; 
+import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid'; 
+
+// Material-UI icons
+import MenuIcon from '@mui/icons-material/Menu'; 
+import FavoriteIcon from '@mui/icons-material/Favorite'; 
+import { SvgIconProps as FavoriteIconProps } from '@mui/material/SvgIcon'; 
+import { SvgIconProps as SearchIconProps } from '@mui/material/SvgIcon'; 
+import SearchIcon from '@mui/icons-material/Search'; 
+import RefreshIcon from '@mui/icons-material/Refresh'; 
+import { SvgIconProps as RefreshIconProps } from '@mui/material/SvgIcon'; 
 
 
 // AppBar

@@ -5,6 +5,9 @@ import {
  } from "../../utils/MaterialUI"
 
 
+ /*
+ * BasicCard that renders a Material UI card with a header and content, passed as props.
+ */
 const BasicCard = ({header, content}) => {
 
   const cardStyles = {
