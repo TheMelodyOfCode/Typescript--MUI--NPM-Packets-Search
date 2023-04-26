@@ -73,7 +73,7 @@ const cardHeaderStyles = {
       <form onSubmit={onSubmit}>
          <MUIBox sx={cardHeaderStyles.wrapper}>
           <SearchBar
-            placeholder="Search by name for the package"
+            placeholder="Search by name"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setTerm(event.target.value)
             }
